@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import TodoInput from "./components/TodoInput.js";
 import TodoList from "./components/TodoList.js";
-
+// showing vs-code github setup
 function App() {
   return (
     // <div className="App">
