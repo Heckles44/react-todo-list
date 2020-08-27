@@ -27,27 +27,37 @@ class App extends Component {
       title: this.state.item,
     };
     const updatedItems = [...this.state.items, newItem];
-    this.setState(
-      {
-        items: updatedItems,
-        item: "",
-        id: uuidv4(),
-        editItem: false,
-      },
-      () => console.log(this.state)
-    );
+    this.setState({
+      items: updatedItems,
+      item: "",
+      id: uuidv4(),
+      editItem: false,
+    });
   };
 
   clearList = () => {
-    console.log("clear list method");
+    this.setState({
+      items: [],
+    });
   };
 
   handleDelete = (id) => {
-    console.log(`handle edit ${id}`);
+    const filteredItems = this.state.items.filter((item) => {
+      return id !== item.id;
+    });
+    this.setState({
+      items: filteredItems,
+    });
   };
 
   handleEdit = (id) => {
-    console.log(`edit ${id}`);
+    this.handleDelete(id);
+    const selectedItem = this.state.items.find((item) => item.id === id);
+    this.setState({
+      item: selectedItem.title,
+      id: id,
+      editItem: true,
+    });
   };
 
   render() {
